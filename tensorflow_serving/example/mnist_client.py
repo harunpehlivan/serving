@@ -104,8 +104,7 @@ def _create_rpc_callback(label, result_counter):
     Args:
       result_future: Result future of the RPC.
     """
-    exception = result_future.exception()
-    if exception:
+    if exception := result_future.exception():
       result_counter.inc_error()
       print(exception)
     else:

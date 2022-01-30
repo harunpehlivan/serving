@@ -128,10 +128,7 @@ def _generate_saved_model_for_half_plus_two(export_dir,
   """
   builder = tf.saved_model.builder.SavedModelBuilder(export_dir)
 
-  device_name = "/cpu:0"
-  if device_type == "gpu":
-    device_name = "/gpu:0"
-
+  device_name = "/gpu:0" if device_type == "gpu" else "/cpu:0"
   with tf.Session(
       graph=tf.Graph(),
       config=tf.ConfigProto(log_device_placement=True)) as sess:

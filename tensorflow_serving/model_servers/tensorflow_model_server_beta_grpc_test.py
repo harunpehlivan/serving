@@ -59,7 +59,7 @@ def PickUnusedPort():
 
 def WaitForServerReady(port):
   """Waits for a server on the localhost to become ready."""
-  for _ in range(0, WAIT_FOR_SERVER_READY_INT_SECS):
+  for _ in range(WAIT_FOR_SERVER_READY_INT_SECS):
     time.sleep(1)
     request = predict_pb2.PredictRequest()
     request.model_spec.name = 'intentionally_missing_model'
